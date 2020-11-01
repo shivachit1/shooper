@@ -1,0 +1,29 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server",
+    "server": "nodemon server",
+    "dev": "concurrently \"(cd .. && cd client && npm run start)\" \"npm run server\""
+  },
+  "keywords": [],
+  "author": "Shopper",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "cookie-session": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.19",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "stripe": "^8.89.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
