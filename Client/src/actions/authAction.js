@@ -1,9 +1,9 @@
 import axios from 'axios';
-
+import { createBrowserHistory } from 'history';
 import { SIGN_IN,SIGN_OUT,UPDATE_USER } from './types';
 
 
-
+const history = createBrowserHistory();
 export const loggedUser = () => dispatch => {
      console.log('signing user');
      
@@ -18,7 +18,7 @@ export const loggedUser = () => dispatch => {
                         user:res.data
                     }
                 })
-                
+                history.push('/mapView');
             }
             else{
                 dispatch({

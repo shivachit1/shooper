@@ -14,7 +14,7 @@ class RegisterBusiness extends Component{
             showNewBusinessFormModal:false,
             showMyBusinessPageModal:false,
             userBusinesses:null,
-            userBusiness:'',
+            userBusiness:[],
             isLoading:true
         }
         this.showNewBusinesForm = this.showNewBusinesForm.bind(this);

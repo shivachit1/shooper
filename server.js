@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 
 const mongoose= require('mongoose');
-const keys=require('../server/keys');
+const keys=require('./keys');
 const passport = require('passport');
 const cookieSession=require('cookie-session');
 const authRoutes= require('./routes/api/authRoutes');
@@ -61,19 +61,6 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
-//get to home page
-app.get('/',(req,res)=>{
-    if(req.user){
-        res.send(`You are logged in.${req.user.userName}`);
-    }else{
-        res.send('Welcome to home Page');
-    }
-});
-
-if(process.env.NODE_ENV === "production"){
-    app.use(express.static('../client/build'));
-}
 
 app.use('/api/auth',authRoutes);
 app.use('/api/business',businessRoutes);
