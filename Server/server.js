@@ -71,10 +71,9 @@ app.get('/',(req,res)=>{
     }
 });
 
-// set Static Folder
-//app.use(express.static(path.join(__dirname,'public')));
-
-
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static('../client/build'));
+}
 
 app.use('/api/auth',authRoutes);
 app.use('/api/business',businessRoutes);
