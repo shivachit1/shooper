@@ -105,12 +105,14 @@ class Business extends Component {
             <div className={showHideClassName}>
                 <div className="modal-main">
                     <div className="top-right-div">
-                        <div className="order-status-spinner">
+                    <button className="modal-close-button" onClick={this.props.handleClose}>X</button>
+                        
+
+                        
+                    </div>
+                    <div className="order-status-spinner">
                             <button className="greyButton" onClick={() => this.showCartView()}>Cart {this.state.cartProducts.length}</button>
                         </div>
-
-                        <button className="modal-close-button" onClick={this.props.handleClose}>X</button>
-                    </div>
                     <h6 className="modal-header">{this.props.store.businessName}</h6>
                     <h6 className="center-container">{this.props.store.businessDescription}</h6>
 
@@ -149,7 +151,8 @@ class Business extends Component {
                             cartProducts={this.state.cartProducts}
                             removeProductFromCart={() => this.removeProductFromCart()}
                             showMyCartModal={this.state.showMyCartModal}
-                            hideCartView={() => this.hideCartView()} />
+                            hideCartView={() => this.hideCartView()}
+                            user={this.props.user} />
                         :
                         <div></div>
                     }

@@ -64,7 +64,7 @@ class MyOrders extends Component {
       }
 
 
-      componentDidMount (){
+      componentWillMount (){
         axios.get('http://localhost:8080/api/orders/'+this.props.user._id).then((res)=>{
             
         this.setState({
@@ -80,7 +80,7 @@ class MyOrders extends Component {
     render(){
 
         const showHideClassName =this.props.showMyOrdersModal ? "modal display-block" : "modal display-none";
-        console.log('myorders');
+        
         
         if(this.state.isLoading){
             return <div className={showHideClassName}>is loading...</div>
@@ -91,20 +91,20 @@ class MyOrders extends Component {
             <div className={showHideClassName}>
             <section className="modal-main" >
                 
-
+            <div className="top-right-div">
+                   
+                   <button className="modal-close-button" onClick={this.props.handleClose}>X</button>
+                  </div>
                 <div >
-                    <div className="top-right-div">
-                    <OrderStatusSpinner selectedOrderStatus={this.selectedOrderStatus}/>
-                     <button className="modal-close-button" onClick={this.props.handleClose}>X</button>
-                    </div>
+                    
                
                 <h6 className="modal-header">My Orders</h6>
-                
+                <OrderStatusSpinner selectedOrderStatus={this.selectedOrderStatus}/>
                 <div className="business-container">
                     {this.state.tempOrders.map(order => (
                        
                         <div key={order._id} className="product-div">
-                        <p className="title">{order.status}</p>
+                        <p className="red-text">{order.status}</p>
                         
                          <p className="price-tag">{order.totalPrice}€</p>
                         

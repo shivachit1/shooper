@@ -73,6 +73,9 @@ class MyBusinessPage extends Component {
 
 
 
+
+
+
     render() {
 
         const showHideClassName = this.props.showMyBusinessPageModal ? "modal display-block" : "modal display-none";
@@ -81,28 +84,36 @@ class MyBusinessPage extends Component {
             <div className={showHideClassName}>
 
                 <div className="business-page" >
-                    <div  className="modal-main">
+                    <div className="modal-main">
                         <div className="top-right-div">
                             <button className="modal-close-button" onClick={this.props.handleClose}>X</button>
                         </div>
 
                         <div className="business-nav">
-                            <h1>{this.props.userBusiness.businessName}</h1>
-
+                            <h1 className="modal-header">{this.props.userBusiness.businessName}</h1>
                             <li><a href="#" onClick={() => this.showView('About')}>About</a></li>
                             <li><a href="#" onClick={() => this.showView('my orders')}>My Orders</a></li>
                             <li><a href="#" onClick={() => this.showView('my products')}>Products</a></li>
 
                         </div>
-                        <About showMyAbout={this.state.showMyAbout} />
-
-                        {this.state.businessClicked ?
+                        {this.props.userBusiness._id!=undefined ?
                             <div>
+                                <About showMyAbout={this.state.showMyAbout} userBusiness={this.props.userBusiness} />
 
-                                <MyProducts userBusiness={this.props.userBusiness} showMyProducts={this.state.showMyProducts} />
-                                <MyOrders userBusiness={this.props.userBusiness} showMyOrders={this.state.showMyOrders} />
-                            </div> :
-                            <div></div>
+
+                                {this.state.businessClicked ?
+                                    <div>
+
+                                        <MyProducts userBusiness={this.props.userBusiness} showMyProducts={this.state.showMyProducts} />
+                                        <MyOrders userBusiness={this.props.userBusiness} showMyOrders={this.state.showMyOrders} />
+                                    </div> :
+                                    <div></div>
+                                }
+                            </div>
+                       
+                        :
+                        null
+
                         }
                     </div>
                 </div>

@@ -1,7 +1,8 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import Business from './Business';
-
+import { connect } from 'react-redux';
+import { loggedUser, signOutUser } from '../../actions/authAction.js';
 
 class PlacesNearby extends Component {
 
@@ -95,7 +96,7 @@ class PlacesNearby extends Component {
                 </section>
 
                 {this.state.store != '' ?
-                    <Business store={this.state.store} showModal={this.state.showModal} handleClose={this.hideModal} />
+                    <Business store={this.state.store} showModal={this.state.showModal} handleClose={this.hideModal} user={this.props.user}/>
 
                     :
                     <div></div>
@@ -109,5 +110,11 @@ class PlacesNearby extends Component {
 };
 
 
+const mapStateToProps = (state) => {
+    
+    return {
+        user:state.userData.user
+    }
+}
 
-export default PlacesNearby;
+export default connect(mapStateToProps, { loggedUser, signOutUser })(PlacesNearby);

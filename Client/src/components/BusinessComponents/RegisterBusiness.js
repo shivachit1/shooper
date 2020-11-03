@@ -87,26 +87,31 @@ class RegisterBusiness extends Component{
                 </div>
                 <h6 className="modal-header">Business Login</h6>
 
-                <div className="light-bg">
+                <div>
                     <button className="greyButton" onClick={this.showNewBusinesForm}>Register New Business</button>
+                    <h6>Your accounts</h6>
+
+<div className="centered-container">
+<section className="horizontal-scroll-div">
+{(userBusinesses != null) ?
+userBusinesses.map((business)=>(
+    <div className="cardView" key={business._id} onClick={()=>this.showMyBusinessPage(business)}>
+           
+            <h5>{business.businessName}</h5>
+       </div>
+))
+
+:
+<div></div>
+
+}
+
+</section>
                 </div>
 
-            <h6>Your accounts</h6>
+           
 
-            <section>
-            {(userBusinesses != null) ?
-            userBusinesses.map((business)=>(
-                <div className="light-bg" key={business._id}>
-                        <button className="greenButton" onClick={()=>this.showMyBusinessPage(business)}>{business.businessName}</button>
-                   </div>
-            ))
-            
-            :
-            <div></div>
-
-        }
-
-        </section>
+        </div>
 
 
     

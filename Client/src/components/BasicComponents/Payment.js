@@ -49,7 +49,7 @@ class Payment extends Component {
             </div>
             <div className="top-right-div">
                      <button className="modal-close-button" onClick={this.props.handleClose}>X</button>
-                </div>
+            </div>
             <h6 className="modal-header">Payment</h6>
             <div className="light-bg">
             <button className="greenButton">+</button>

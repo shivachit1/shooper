@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import OrderStatusSpinner from '../BasicComponents/OrderStatusSpinner';
+import Order from './Order';
 import axios from 'axios';
+import moment from 'moment';
 
 class MyOrders extends Component {
     constructor(props) {
@@ -10,7 +12,9 @@ class MyOrders extends Component {
             showOrderStatusSpinnerMenu: false,
             selectedStatus: "all",
             myOrders: [],
-            tempOrders:[]
+            tempOrders: [],
+            showOrderDetails: false,
+            order: ''
         }
         this.showDropdownMenu = this.showDropdownMenu.bind(this);
         this.hideDropdownMenu = this.hideDropdownMenu.bind(this);
@@ -54,12 +58,17 @@ class MyOrders extends Component {
     }
 
 
-    trackOrder = (orderID) => {
-        console.log('track Order of :' + orderID);
+    trackOrder = (order) => {
+        console.log('track Order of :' + order._id);
+
     }
 
-    viewOrderDetails = (orderID) => {
-        console.log('view order details of :' + orderID);
+    viewOrderDetails = (order) => {
+        console.log('view order details of :' + order._id);
+        this.setState({
+            showOrderDetails: true,
+            order: order
+        })
     }
 
 
@@ -68,7 +77,7 @@ class MyOrders extends Component {
 
             this.setState({
                 myOrders: res.data,
-                tempOrders:res.data,
+                tempOrders: res.data,
                 isLoading: false
             })
 
@@ -85,38 +94,37 @@ class MyOrders extends Component {
         return (
             <div className={showHideClassName}>
 
-                <div >
-                    <div className="top-right-div">
-                        <OrderStatusSpinner selectedOrderStatus={this.selectedOrderStatus} />
-                    </div>
+                
 
-                    <h6 className="modal-header">My Orders</h6>
+                {this.state.showOrderDetails ?
+                    <Order showOrderDetails={this.state.showOrderDetails} order={this.state.order} />
+                    :
+                    <div >
+                    <OrderStatusSpinner selectedOrderStatus={this.selectedOrderStatus} />
+                    
 
                     <div className="business-container">
                         {this.state.tempOrders.map(order => (
                             <div className="product-div" key={order._id}>
-                                
-                                
-                                
-                             
-                         
+
                                 <p className="price-tag">{order.totalPrice}€</p>
-                                <p className="title">Order By: Name</p>
-                                <p className="title">Order Time</p>
-                                <p className="title">Delivery Address</p>
-                                <p className="title">{order.status}</p>
-                                
+                                <p className="red-text">{order.status}</p>
+
                                 <div className="center">
-                                     <p className="lightBlue-button" onClick={() => this.viewOrderDetails(order._id)}>View Details</p>
-                                <p className="lightBlue-button" onClick={() => this.viewOrderDetails(order._id)}>Track Order</p>
+                                <p className="title">Order By: Name</p>
+                        <p className="title">Order Time:{moment(order.orderTime).format('lll')}</p>
+                                <p className="title">Delivery Address</p>
+                                    <p className="green-button" onClick={() => this.viewOrderDetails(order)}>View Details</p>
                                 </div>
-                               
+
                             </div>
 
 
                         ))}
                     </div>
                 </div>
+                }
+
 
             </div>
         );

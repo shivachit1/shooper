@@ -13,7 +13,7 @@
 }
 .center-container{
   text-align: center;
-  
+  display: block;
 }
 .header {
   color: rgb(247, 242, 242);
@@ -414,8 +414,8 @@ span{
   padding: 4px;
   margin-left: 8px;
   float: right;
-  top:0;
-  right:0;
+  top:40;
+  right:20;
   color: aliceblue;
   border-radius: 4px;
   font-size: 14px;
@@ -542,6 +542,7 @@ span{
 .dropdown_menuItem:hover{
   filter: brightness(1.5);
   background-color: rgba(42, 53, 46, 0.548);
+  border-radius: 10px;
 }
 
 .greenButton{
@@ -674,6 +675,7 @@ text-align: center;
 }
 
 .light-bg{
+  display: inline;
   background-color: rgba(46, 148, 37, 0.185);
   border-radius: 15px;
   margin: 20px;
@@ -689,7 +691,27 @@ text-align: center;
   padding: 20px;
 }
 
+.horizontal-scroll-div{
+  text-align: center;
+  justify-content: center;
+}
 
+.cardView{
+  height: auto;
+  width: 110px;
+  display: inline-block;
+  text-align: center;
+  margin: 12px;
+  padding: 4px;
+  border-radius: 20px 20px;
+  border: 1px solid rgba(0, 128, 0,0);
+  transition: all 0.5s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.575)
+}
+
+.cardView:hover{
+  box-shadow: 0 16px 32px 0 rgba(0, 0, 0, 0.89)
+}
 
 .order-div{
   flex:0 1 calc(33% - 5em);
@@ -711,41 +733,59 @@ background-color: rgba(171, 231, 171, 0.77);
   font-weight: bold;
   width: 100%;
 }
+.red-text{
+  font-size: 16px;
+  color: rgb(236, 17, 17);
+  padding: 4px;
+  font-weight: bold;
+  text-align: right;
+  margin-right: 16;
+}
 
 .top-right-div{
+  color: red;
   float: right;
-  top: 50px;
+  top: 20px;
+  right: 20px;
+  margin-bottom: 20px;
   margin-right: 10px;
   margin-top:10px
 }
 
 .order-status-spinner{
-  display: inline;
+  text-align: right;
+  margin-bottom: 20px;
   margin-right: 10px;
-  text-align: center;
-  justify-content: center;
-  
+  margin-top:10px
   
 }
 
 .spinner-button{
-  background-color: rgb(34, 6, 214);
+  background-color: rgba(34, 6, 214, 0.466);
   padding-left: 4px;
   padding-left: 4px;
   width: 80px;
-  color: aliceblue;
+  color: rgb(17, 17, 17);
   border-radius: 10px;
+  font-weight: bold;
   font-size: 14px;
   text-decoration: none;
   border: transparent;
   outline: none;
   display: inline-block;
+  text-align: center;
 }
 
 .spinner-dropdown-list{
-  position: absolute;
+ position: absolute;
+ margin-top: 10px;
+  right: 0;
   background-color: black;
   width: 100px;
+  justify-content: center;
+  text-align: right;
+  z-index: 10;
+  border-radius: 10px;
 
 }
 
@@ -776,7 +816,7 @@ li {
   display: inline;
   margin: 10px;
   color: green;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: bold;
 }
 a{
@@ -804,6 +844,26 @@ a{
   overflow-y:scroll;
 }
 
+.centered-cardView{
+  height: calc(100vh - 14em);
+}
+
+.light-cardView{
+  
+  height: fit-content;
+  display: inline-block;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 12px;
+  padding: 4px;
+  border-radius: 20px 20px;
+  border: 3px solid rgba(0, 128, 0, 0);
+  transition: all 0.5s;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.575)
+  
+
+}
 
 .product-image{
   text-align: center;
@@ -827,11 +887,9 @@ a{
   padding: 4px;
   border-radius: 20px 20px;
   border: 3px solid rgba(0, 128, 0, 0);
-  background-color: rgba(171, 231, 171, 0.77);
+  background-color: rgba(171, 231, 171, 0.616);
   transition: all 0.5s;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.575)
-  
-
   
 
 }
@@ -958,8 +1016,27 @@ a{
   height: 90vh;
 }
 .graph-container{
-  width: 70%;
-  height:70%;
+    height: 300px;
+    width: fit-content;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 4px;
+    margin: 20px;
+    margin-top: 60px;
+    background-color: rgba(249, 248, 252, 0.13);
+    border-radius: 20px 20px;
+    border: 3px solid rgba(0, 128, 0, 0);
+    transition: all 0.5s;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.575)
+  }
+
+  .graph-container:hover{
+    
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.959)
+  }
+.graph{
+  justify-content: center;
+  display: inline-block;
 }
 
 .horizontal-inline{
@@ -979,15 +1056,19 @@ a{
   margin-bottom: 10px;
   overflow-x: scroll;
   text-align: center;
+  
 }
 
 .block{
   display:inline-block;
-  margin: 10px;
-  padding: 10px;
-  background-color: rgba(171, 231, 171, 0.77);
-  border-radius: 20px;
   width: 40%;
+  text-align: center;
+  align-self: center;
+  margin: 10px;
+  margin-top: 30px;
+  padding: 10px;
+  border: 2px solid rgba(171, 231, 171, 0.77);
+  border-radius: 20px;
 }
 
 .yellow-button{
@@ -1011,7 +1092,6 @@ a{
   text-align: center;
   padding: 4px;
   margin-bottom: 10px;
-  float: bottom;
 }
 
 .fixed-div{
@@ -1021,7 +1101,7 @@ a{
 }
 
 .red-button{
-  background-color: rgb(148, 19, 19);
+  background-color: rgb(197, 30, 30);
   border-radius: 20px;
   text-align: center;
   padding: 10px;
@@ -1045,7 +1125,25 @@ a{
   display: inline-block;
 }
 
+.green-button{
+  background-color: rgb(19, 131, 25);
+  padding: 10px;
+  margin:4px;
+  color: aliceblue;
+  border-radius: 10px;
+  font-size: 14px;
+  display: inline-block;
+}
+.flex{
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-a;
+}
 
+p:hover{
+  filter: brightness(1.2);
+}
 @media (max-width:600px){
 
   .product-div{
@@ -1053,14 +1151,12 @@ a{
   }
 }
 
-
-
-@media (max-width:800px){
+@media (max-width:1000px){
   .business-container{
     justify-content: center;
   }
 
   .product-div{
-    flex:0 1 calc(50% - 3em) ;
+    flex:1 1 calc(100% - 3em) ;
   }
 }

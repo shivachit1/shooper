@@ -119,7 +119,6 @@ class NewBusinessForm extends Component{
 
                     <input type="file" id="file-upload" accept="image/*" onChange={this.changeImage} style={{display:"none" }} required/>
                     <label className="modal-fileupload-button" htmlFor="file-upload" required>Upload file</label>
-                   
                     </div>
 
                 <div className="form" >

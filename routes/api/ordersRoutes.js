@@ -6,7 +6,7 @@ const Order = require('../../models/order');
 //get all orders details
 router.get('/:id',async(req,res)=>{
     try{
-        const orders = await Order.find({'orderBy':'shiva'});
+        const orders = await Order.find({'orderBy':req.params.id});
         console.log('get user orders')
       console.log(orders);
       console.log(req.params.id);
@@ -39,7 +39,7 @@ router.post('/',async(req,res)=>{
     const order = new Order({
         orderBy:req.body.orderBy,
         orderTo :req.body.orderTo,
-        orderTime:new Date().getMilliseconds(),
+        orderTime:req.body.orderTime,
         status:req.body.status,
         products:req.body.products,
         totalPrice:req.body.totalPrice

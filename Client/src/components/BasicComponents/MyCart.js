@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import axios from 'axios';
 import OrderPlaced from './OrderPlaced';
+import moment from 'moment';
 
 class MyCart extends Component {
 
@@ -45,6 +46,7 @@ class MyCart extends Component {
             });
         }
         
+        
 
         
     }
@@ -66,22 +68,27 @@ class MyCart extends Component {
 
     payThePayment = () =>{
        
-        console.log(this.props);
-
+        console.log(this.props.user._id);
+        var date = moment().toString();
         axios.post("http://localhost:8080/api/orders",{
-        orderBy:"shiva",
+        orderBy:this.props.user._id,
         orderTo :this.props.store._id,
-        orderTime:(new Date()).toLocaleString(),
+        orderTime:date,
         status:"Pending",
         products:this.state.products,
         totalPrice:100
         }).then((res)=>{
+            
+            
+            console.log(moment(res.data.orderTime).toString());
             console.log(res.data);
             this.setState({
                 payment:true
             })
             
         });
+
+        console.log(date);
 
     }
 
