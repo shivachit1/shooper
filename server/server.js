@@ -12,7 +12,7 @@ const productsRoutes= require('./routes/api/myProductsRoutes');
 const ordersRoutes= require('./routes/api/ordersRoutes');
 const paymentRoutes = require('./routes/api/paymentRoutes');
 const PORT = process.env.PORT || 8080;
-const cors = require('cors');
+const cors = require('cors');s
 
 // connection to mongodb atlas
 mongoose.connect(keys.mongodb.mongoURI, {useNewUrlParser:true
